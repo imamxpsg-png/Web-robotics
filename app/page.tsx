@@ -1,55 +1,65 @@
 // app/akademik/page.tsx
-"use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
-export default function AkademikPortal() {
-  const [role, setRole] = useState<'reader' | 'admin'>('reader');
-
+export default function AkademikBeranda() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16 text-center">
-      <h1 className="text-3xl font-extrabold mb-2">Portal Akademik Dacia Labs</h1>
-      <p className="text-gray-500 mb-8">Pilih mode akses Anda untuk menjelajahi data laboratorium.</p>
+    <div className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden bg-black text-white">
+      {/* Elemen Video Latar Belakang Asli */}
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-40 z-0 pointer-events-none"
+      >
+        <source src="https://mixkit.co" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* Switcher Role Akses */}
-      <div className="inline-flex p-1 bg-gray-200 rounded-lg mb-12">
-        <button 
-          onClick={() => setRole('reader')}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition ${role === 'reader' ? 'bg-white shadow text-blue-600' : 'text-gray-600'}`}
-        >
-          Mata-Mata (Reader Mode)
-        </button>
-        <button 
-          onClick={() => setRole('admin')}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition ${role === 'admin' ? 'bg-white shadow text-blue-600' : 'text-gray-600'}`}
-        >
-          Pengelola (Admin Mode)
-        </button>
-      </div>
+      {/* Lapisan Gradasi Gelap Kontras */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10" />
 
-      {/* Status Banner */}
-      <div className={`p-4 rounded-xl mb-8 border text-left ${role === 'admin' ? 'bg-red-50 border-red-200 text-red-700' : 'bg-green-50 border-green-200 text-green-700'}`}>
-        <p className="text-sm font-semibold">
-          {role === 'admin' 
-            ? '⚡ Mode Admin Aktif: Anda memiliki otoritas penuh untuk memodifikasi fase riset dan menulis artikel baru.' 
-            : '👁️ Mode Baca Aktif: Anda dapat melihat seluruh arsip, jurnal publik, dan portofolio terkini.'}
+      {/* Konten Teks Hero Utama */}
+      <div className="relative max-w-5xl mx-auto px-6 py-28 z-20 flex flex-col justify-center h-full min-h-[calc(100vh-160px)]">
+        <span className="text-xs font-bold tracking-widest text-blue-500 uppercase bg-blue-950/60 border border-blue-800/50 px-4 py-1.5 rounded-full w-fit">
+          ROBOTICS ROMANIA
+        </span>
+        
+        <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mt-6 leading-tight max-w-3xl">
+          Driving the Future of Europe with Autonomous Technology and AI.
+        </h1>
+        
+        <p className="text-gray-400 mt-6 text-lg leading-relaxed max-w-2xl">
+          Kami bermitra dengan industri Uni Eropa untuk merealisasikan integrasi kecerdasan buatan, komputasi saraf, dan mekanika bionik langsung dari pusat riset Bucharest.
         </p>
-      </div>
 
-      {/* Navigasi Modul Berbeda Halaman */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <Link href="/akademik/fase" className="p-6 bg-white border rounded-xl hover:shadow-md transition group">
-          <h3 className="font-bold text-lg group-hover:text-blue-600">Evolusi Teknologi →</h3>
-          <p className="text-xs text-gray-500 mt-1">Garis waktu standarisasi otomasi nirkabel Uni Eropa.</p>
-        </Link>
-        <Link href="/akademik/proyek" className="p-6 bg-white border rounded-xl hover:shadow-md transition group">
-          <h3 className="font-bold text-lg group-hover:text-blue-600">Proyek Unggulan →</h3>
-          <p className="text-xs text-gray-500 mt-1">Daftar robotika taktis dan bionik aktif laboratorium.</p>
-        </Link>
-        <Link href="/akademik/artikel" className="p-6 bg-white border rounded-xl hover:shadow-md transition group">
-          <h3 className="font-bold text-lg group-hover:text-blue-600">Artikel & Jurnal →</h3>
-          <p className="text-xs text-gray-500 mt-1">Publikasi riset kecerdasan buatan teranyar.</p>
-        </Link>
+        {/* Akses Cepat Navigasi Modul Terpisah */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-4xl">
+          <Link href="/akademik/fase" className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl hover:border-white transition flex flex-col justify-between h-40 group">
+            <div>
+              <span className="text-[10px] font-mono text-gray-500 tracking-wider">FASE 01 - 03</span>
+              <h3 className="text-lg font-bold tracking-tight text-white mt-1 group-hover:text-blue-400 transition">Evolusi Teknologi</h3>
+            </div>
+            <span className="text-xs font-bold tracking-widest uppercase text-white pb-1 border-b border-white w-fit">Lihat Riset →</span>
+          </Link>
+
+          <Link href="/akademik/proyek" className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl hover:border-white transition flex flex-col justify-between h-40 group">
+            <div>
+              <span className="text-[10px] font-mono text-gray-500 tracking-wider">PORTFOLIO AKTIF</span>
+              <h3 className="text-lg font-bold tracking-tight text-white mt-1 group-hover:text-blue-400 transition">Proyek Unggulan</h3>
+            </div>
+            <span className="text-xs font-bold tracking-widest uppercase text-white pb-1 border-b border-white w-fit">Buka Portfolio →</span>
+          </Link>
+
+          <Link href="/akademik/artikel" className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl hover:border-white transition flex flex-col justify-between h-40 group">
+            <div>
+              <span className="text-[10px] font-mono text-gray-500 tracking-wider">JURNAL ILMIAH</span>
+              <h3 className="text-lg font-bold tracking-tight text-white mt-1 group-hover:text-blue-400 transition">Artikel Berkala</h3>
+            </div>
+            <span className="text-xs font-bold tracking-widest uppercase text-white pb-1 border-b border-white w-fit">Baca Jurnal →</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
